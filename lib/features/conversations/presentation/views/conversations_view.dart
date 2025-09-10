@@ -16,14 +16,7 @@ class _ConversationsViewState extends State<ConversationsView> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Conversations View', style: context.headlineLarge),
-          context.divider(),
-          Text(
-            'This is a sample conversation view.',
-            style: context.bodyMedium,
-          ),
-        ],
+        children: [Text('Conversations View', style: context.bodySmall)],
       ),
     );
   }

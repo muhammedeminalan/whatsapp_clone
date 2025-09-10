@@ -17,12 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppTheme appTheme = AppTheme(); // SOLID yapımızdaki AppTheme
-
     return MaterialApp(
       title: 'whatsapp_clone',
       debugShowCheckedModeBanner: false,
-      theme: appTheme.dark,
+      theme: AppTheme.dark,
       home: const ConversationsView(),
     );
   }
