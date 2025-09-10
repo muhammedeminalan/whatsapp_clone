@@ -7,30 +7,45 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+ 
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8
-  flutter_bloc: ^9.1.1
-  equatable: ^2.0.7
-  firebase_core: ^4.1.0
-  firebase_auth: ^6.0.2
-  firebase_database: ^12.0.1
-  cloud_firestore: ^6.0.1
-  auto_route: ^10.1.2
-  image_picker: ^1.2.0
-  camera: ^0.11.2
-  dio: ^5.9.0
+  cupertino_icons: ^1.0.8         
+
+  # State Management
+  flutter_bloc: ^9.1.1             
+  equatable: ^2.0.7                 
+
+  # Firebase - Backend servisleri
+  firebase_core: ^4.1.0             
+  firebase_auth: ^6.0.2           
+  firebase_database: ^12.0.1   
+  cloud_firestore: ^6.0.1        
+
+  # Navigation 
+  auto_route: ^10.1.2               
+
+  # Images & Camera - 
+  image_picker: ^1.2.0               
+  camera: ^0.11.2                     
+
+  # Network 
+  dio: ^5.9.0                       
+  # Dependency Injection 
   get_it: ^8.2.0
 
 dev_dependencies:
+  # Test ve kod standartları
   flutter_test:
-    sdk: flutter
-  flutter_lints: ^5.0.0
-  build_runner: ^2.4.11
-  auto_route_generator: ^10.2.2
-  flutter_launcher_icons: ^0.14.4
+    sdk: flutter                
+  flutter_lints: ^5.0.0              # Kod standartlarını kontrol etmek için
 
-# ⚡ Sadece burası düzeltildi: flutter_icons en dış seviyede
+  # Code generation & routing
+  build_runner: ^2.4.11              # Code generation için
+  auto_route_generator: ^10.2.2      # auto_route için route kodlarını otomatik oluşturur
+
+  # Launcher Icons
+  flutter_launcher_icons: ^0.14.4    
 flutter_icons:
   android: true
   ios: true
@@ -39,4 +54,4 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-    - assets/app_logo/
+    - assets/app_logo/           
