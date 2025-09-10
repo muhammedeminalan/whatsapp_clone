@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:whatsapp_clone/features/conversations/presentation/views/conversations_view.dart';
+import 'config/theme/app_theme.dart';
+import 'features/conversations/presentation/views/conversations_view.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -13,15 +14,15 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final AppTheme appTheme = AppTheme(); // SOLID yapımızdaki AppTheme
+
     return MaterialApp(
       title: 'whatsapp_clone',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
+      theme: appTheme.dark,
       home: const ConversationsView(),
     );
   }
