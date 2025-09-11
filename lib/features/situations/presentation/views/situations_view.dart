@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/widgets/card/dismisible_card.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/core_app_bar.dart';
 

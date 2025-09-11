@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
-import 'package:whatsapp_clone/core/utils/widgets/card/dismisible_card.dart';
+import 'package:whatsapp_clone/core/widgets/card/dismisible_card.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/core_app_bar.dart';
 import 'package:whatsapp_clone/core/widgets/text_field/costum_text_field.dart';
