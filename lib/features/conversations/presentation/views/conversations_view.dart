@@ -6,8 +6,9 @@ import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/card/dismisible_card.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
-import 'package:whatsapp_clone/core/widgets/core_app_bar.dart';
+import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
 import 'package:whatsapp_clone/core/widgets/text_field/costum_text_field.dart';
+import 'package:whatsapp_clone/features/dm_message/presentation/views/dm_mesage_view.dart';
 
 class ConversationsView extends StatefulWidget {
   const ConversationsView({super.key});
@@ -88,7 +89,9 @@ class _ConversationsViewState extends State<ConversationsView> {
                   ),
                   onMoreTap: () => debugPrint('More button clicked'),
                   onTap: () {
-                    debugPrint('Card tapped: Kullanıcı ${index + 1}');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => DmMessageView()),
+                    );
                   },
                 );
               },

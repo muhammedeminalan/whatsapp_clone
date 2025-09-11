@@ -23,28 +23,31 @@ dependencies:
   cloud_firestore: ^6.0.1        
   #local storage
   shared_preferences: ^2.1.1
+  
   # Navigation 
-  auto_route: ^10.1.2               
+         
 
   # Images & Camera - 
   image_picker: ^1.2.0               
   camera: ^0.11.2                     
 
   # Network 
-  dio: ^5.9.0                       
+  dio: ^5.9.0  
+
   # Dependency Injection 
   get_it: ^8.2.0
+  uuid: ^4.5.1
 
 
 dev_dependencies:
-  # Test ve kod standartları
+
   flutter_test:
     sdk: flutter                
-  flutter_lints: ^5.0.0              # Kod standartlarını kontrol etmek için
+  flutter_lints: ^6.0.0              
 
   # Code generation & routing
-  build_runner: ^2.4.11              # Code generation için
-  auto_route_generator: ^10.2.2      # auto_route için route kodlarını otomatik oluşturur
+  build_runner: ^2.7.1              
+    
 
   # Launcher Icons
   flutter_launcher_icons: ^0.14.4    

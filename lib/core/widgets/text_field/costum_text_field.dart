@@ -34,7 +34,7 @@ class CostumTextField extends StatelessWidget {
       cursorColor: theme.colorScheme.primary,
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
-        hintText: hintText ?? 'Ara',
+        hintText: hintText ?? '',
         hintStyle: theme.textTheme.bodyMedium?.copyWith(color: theme.hintColor),
         filled: true,
         fillColor: theme.colorScheme.surfaceContainerHighest,

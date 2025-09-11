@@ -22,7 +22,7 @@ class BottomNavigationView extends StatelessWidget {
             case NavigationTab.situations:
               return const ConversationsView();
             case NavigationTab.settings:
-              return const SettingsViews();
+              return const SettingsView();
           }
         },
       ),

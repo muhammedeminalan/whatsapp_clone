@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whatsapp_clone/core/widgets/core_app_bar.dart';
+import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
 
 import '../../../../../config/theme/cubit/theme_cubit.dart';
 
-class SettingsViews extends StatefulWidget {
-  const SettingsViews({super.key});
+class SettingsView extends StatefulWidget {
+  const SettingsView({super.key});
 
   @override
-  State<SettingsViews> createState() => _SettingsViewsState();
+  State<SettingsView> createState() => _SettingsViewState();
 }
 
-class _SettingsViewsState extends State<SettingsViews> {
+class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
