@@ -200,7 +200,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Wonzy** - *Flutter Developer*
+**Emin Alan** - *Flutter Developer*
 
 ## 🙏 Acknowledgments
 
@@ -211,7 +211,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-If you have any questions or issues, please open an issue on GitHub or contact [your-email@example.com]
+If you have any questions or issues, please open an issue on GitHub or contact [eminalan334@gmail.com]
 
 ---
 
