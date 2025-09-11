@@ -21,7 +21,8 @@ dependencies:
   firebase_auth: ^6.0.2           
   firebase_database: ^12.0.1   
   cloud_firestore: ^6.0.1        
-
+  #local storage
+  shared_preferences: ^2.1.1
   # Navigation 
   auto_route: ^10.1.2               
 
@@ -33,6 +34,7 @@ dependencies:
   dio: ^5.9.0                       
   # Dependency Injection 
   get_it: ^8.2.0
+
 
 dev_dependencies:
   # Test ve kod standartları

@@ -20,12 +20,17 @@ extension ContextExtension on BuildContext {
   Divider divider({Color? color}) => Divider(color: color);
 
   /// Renkler
-  Color get primaryColor => Theme.of(this).colorScheme.primary;
-  Color get secondaryColor => Theme.of(this).colorScheme.secondary;
-  Color get errorColor => Theme.of(this).colorScheme.error;
-  Color get backgroundColor => Theme.of(this).colorScheme.surface;
-  Color get onPrimaryColor => Theme.of(this).colorScheme.onPrimary;
-  Color get onSecondaryColor => Theme.of(this).colorScheme.onSecondary;
+  Color get primaryColor =>
+      Theme.of(this).colorScheme.primary; // Color(0xFF075E54);
+  Color get secondaryColor =>
+      Theme.of(this).colorScheme.secondary; // Color(0xFF25D366);
+  Color get errorColor => Theme.of(this).colorScheme.error; // Colors.red;
+  Color get backgroundColor =>
+      Theme.of(this).colorScheme.surface; // Color(0xFFECE5DD);
+  Color get onPrimaryColor =>
+      Theme.of(this).colorScheme.onPrimary; // Colors.white;
+  Color get onSecondaryColor =>
+      Theme.of(this).colorScheme.onSecondary; // Colors.white;
 
   /// TextTheme kısaltmaları
   TextStyle? get displayLarge => Theme.of(this).textTheme.displayLarge;

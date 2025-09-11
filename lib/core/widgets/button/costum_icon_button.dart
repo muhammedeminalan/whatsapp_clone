@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CostumIconButton extends StatelessWidget {
-  CostumIconButton({
+  const CostumIconButton({
     super.key,
     required this.icon,
     this.onTap,
-    this.bgColor = Colors.transparent,
+    this.bgColor,
     this.iconColor,
     this.size = 15,
   });
