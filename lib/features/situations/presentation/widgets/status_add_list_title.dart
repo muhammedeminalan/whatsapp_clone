@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 
-class StatusAddCard extends StatelessWidget {
+class StatusAddListTile extends StatelessWidget {
   final String profileImageUrl;
   final String userName;
   final VoidCallback? onAddPressed;
-  final VoidCallback? onIcon1Pressed;
-  final VoidCallback? onIcon2Pressed;
+  final VoidCallback? cameraPressed;
+  final VoidCallback? textPressed;
 
-  const StatusAddCard({
+  const StatusAddListTile({
     super.key,
     required this.profileImageUrl,
     required this.userName,
     this.onAddPressed,
-    this.onIcon1Pressed,
-    this.onIcon2Pressed,
+    this.cameraPressed,
+    this.textPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Profil Foto + Add Button
-        Stack(
+    return Card(
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 3, vertical: 8),
+        leading: Stack(
           clipBehavior: Clip.none,
           children: [
             CircleAvatar(
@@ -45,18 +44,16 @@ class StatusAddCard extends StatelessWidget {
             ),
           ],
         ),
-
-        10.width,
-
-        // Kullanıcı adı
-        Expanded(child: Text(userName, style: context.headlineSmall)),
-
-        // Sağdaki 2 icon button
-        CostumIconButton(icon: Icons.camera_alt, onTap: onIcon1Pressed),
-        10.width,
-        CostumIconButton(icon: Icons.edit, onTap: onIcon2Pressed),
-        10.width,
-      ],
+        title: Text(userName, style: context.headlineSmall),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CostumIconButton(icon: Icons.camera_alt, onTap: cameraPressed),
+            const SizedBox(width: 10),
+            CostumIconButton(icon: Icons.edit, onTap: textPressed),
+          ],
+        ),
+      ),
     );
   }
 }

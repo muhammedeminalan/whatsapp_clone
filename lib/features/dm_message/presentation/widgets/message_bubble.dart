@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/features/dm_message/data/model/message_model.dart';
 
 class SwipeableMessageBubble extends StatefulWidget {
@@ -32,7 +33,7 @@ class _SwipeableMessageBubbleState extends State<SwipeableMessageBubble>
     );
     _offsetAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0.2, 0), // sağa %20 kayma
+      end: const Offset(0.3, 0), // sağa %30 kayma
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
   }
 
@@ -66,12 +67,10 @@ class _SwipeableMessageBubbleState extends State<SwipeableMessageBubble>
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 4),
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-            constraints: BoxConstraints(
-              maxWidth: MediaQuery.of(context).size.width * 0.7,
-            ),
+            constraints: BoxConstraints(maxWidth: context.scrennWidth(0.7)),
             decoration: BoxDecoration(
               color: widget.message.isMe
-                  ? context.primaryColor
+                  ? context.primary800
                   : context.onPrimaryColor,
               borderRadius: BorderRadius.only(
                 topLeft: radius,
@@ -89,9 +88,10 @@ class _SwipeableMessageBubbleState extends State<SwipeableMessageBubble>
                   widget.message.text,
                   style: TextStyle(
                     color: widget.message.isMe ? Colors.white : Colors.black87,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 4),
+                4.height,
                 Text(
                   widget.formatTime(widget.message.timestamp),
                   style: TextStyle(
@@ -99,6 +99,7 @@ class _SwipeableMessageBubbleState extends State<SwipeableMessageBubble>
                         ? Colors.white70
                         : Colors.black54,
                     fontSize: 10,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],

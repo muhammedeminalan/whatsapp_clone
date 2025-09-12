@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 
 class DismisibleCardController {
   final ValueNotifier<double> offset = ValueNotifier(0);
@@ -13,7 +14,7 @@ class DismisibleCardController {
   void togglePin() {
     isPinned.value = !isPinned.value;
     if (isPinned.value) {
-      onPinned?.call(); // pinlendiğinde çağrılır
+      onPinned?.call(); // pinlendiğinde callback
     }
   }
 
@@ -55,11 +56,20 @@ class DismisibleCard extends StatelessWidget {
       onTap: onTap,
       child: Stack(
         children: [
-          // Arka plan aksiyonları
+          // Arka plan aksiyonları (Pin + More)
           Positioned.fill(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                InkWell(
+                  onTap: controller.togglePin,
+                  child: Container(
+                    width: 60,
+                    color: context.primaryColor,
+                    alignment: Alignment.center,
+                    child: const Icon(Icons.push_pin, size: 28),
+                  ),
+                ),
                 InkWell(
                   onTap: onMoreTap,
                   child: Container(
@@ -68,23 +78,6 @@ class DismisibleCard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: const Icon(Icons.more_horiz, size: 28),
                   ),
-                ),
-                ValueListenableBuilder<bool>(
-                  valueListenable: controller.isPinned,
-                  builder: (context, isPinned, child) {
-                    return InkWell(
-                      onTap: controller.togglePin,
-                      child: Container(
-                        width: 60,
-                        color: context.primaryColor,
-                        alignment: Alignment.center,
-                        child: Icon(
-                          isPinned ? Icons.push_pin : Icons.push_pin_outlined,
-                          size: 28,
-                        ),
-                      ),
-                    );
-                  },
                 ),
               ],
             ),
@@ -130,12 +123,7 @@ class DismisibleCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Profil fotoğrafı
-          CircleAvatar(
-            radius: 32,
-            backgroundImage: NetworkImage(
-              profil, // buraya gerçek resim URL'sini koy
-            ),
-          ),
+          CircleAvatar(radius: 32, backgroundImage: NetworkImage(profil)),
           const SizedBox(width: 16),
           // Kullanıcı adı ve mesaj
           Expanded(
@@ -162,7 +150,7 @@ class DismisibleCard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          // Sağ taraf: saat, pin, badge
+          // Sağ taraf: saat, pin durumu, badge
           Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -179,11 +167,13 @@ class DismisibleCard extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  // Pin ikonu: sadece isPinned true olduğunda görünsün
                   ValueListenableBuilder<bool>(
                     valueListenable: controller.isPinned,
                     builder: (context, isPinned, child) {
+                      if (!isPinned) return const SizedBox.shrink();
                       return Icon(
-                        isPinned ? Icons.push_pin : Icons.push_pin_outlined,
+                        Icons.push_pin,
                         size: 24,
                         color: theme.colorScheme.onSurface.withOpacity(0.6),
                       );

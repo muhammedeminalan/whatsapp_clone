@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/config/theme/colors/primary_colors.dart';
+import 'package:whatsapp_clone/config/theme/colors/secondary_colors.dart';
 
 extension ContextExtension on BuildContext {
   /// Ekran boyutları
@@ -31,6 +33,30 @@ extension ContextExtension on BuildContext {
       Theme.of(this).colorScheme.onPrimary; // Colors.white;
   Color get onSecondaryColor =>
       Theme.of(this).colorScheme.onSecondary; // Colors.white;
+
+  // Primary shades
+  Color get primary50 => PrimaryColors.primary50;
+  Color get primary200 => PrimaryColors.primary200;
+  Color get primary100 => PrimaryColors.primary100;
+  Color get primary300 => PrimaryColors.primary300;
+  Color get primary400 => PrimaryColors.primary400;
+  Color get primary500 => PrimaryColors.primary500;
+  Color get primary600 => PrimaryColors.primary600;
+  Color get primary700 => PrimaryColors.primary700;
+  Color get primary800 => PrimaryColors.primary800;
+  Color get primary900 => PrimaryColors.primary900;
+
+  // Secondary shades
+  Color get secondary50 => SecondaryColors.secondary50;
+  Color get secondary100 => SecondaryColors.secondary100;
+  Color get secondary200 => SecondaryColors.secondary200;
+  Color get secondary300 => SecondaryColors.secondary300;
+  Color get secondary400 => SecondaryColors.secondary400;
+  Color get secondary500 => SecondaryColors.secondary500;
+  Color get secondary600 => SecondaryColors.secondary600;
+  Color get secondary700 => SecondaryColors.secondary700;
+  Color get secondary800 => SecondaryColors.secondary800;
+  Color get secondary900 => SecondaryColors.secondary900;
 
   /// TextTheme kısaltmaları
   TextStyle? get displayLarge => Theme.of(this).textTheme.displayLarge;

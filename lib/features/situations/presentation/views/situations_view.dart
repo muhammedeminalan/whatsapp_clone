@@ -5,8 +5,8 @@ import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
-import 'package:whatsapp_clone/features/situations/presentation/widgets/status_add_card.dart';
-import 'package:whatsapp_clone/core/widgets/card/status_card.dart';
+import 'package:whatsapp_clone/features/situations/presentation/widgets/status_add_list_title.dart';
+import 'package:whatsapp_clone/features/situations/presentation/widgets/status_list_title.dart';
 
 class SituationsView extends StatefulWidget {
   const SituationsView({super.key});
@@ -40,7 +40,7 @@ class _SituationsViewState extends State<SituationsView> {
       child: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return StatusCard(
+          return StatusListTile(
             userName: "Kullanıcı $index",
             url: "https://i.pravatar.cc/150?img=$index",
           );
@@ -49,13 +49,13 @@ class _SituationsViewState extends State<SituationsView> {
     );
   }
 
-  StatusAddCard _statusAddCard() {
-    return StatusAddCard(
+  StatusAddListTile _statusAddCard() {
+    return StatusAddListTile(
       profileImageUrl: "https://i.pravatar.cc/150?img=1",
       userName: 'Wonzy',
       onAddPressed: () => debugPrint('Add button clicked'),
-      onIcon1Pressed: () => debugPrint('Call clicked'),
-      onIcon2Pressed: () => debugPrint('Message clicked'),
+      cameraPressed: () => debugPrint('Call clicked'),
+      textPressed: () => debugPrint('Message clicked'),
     );
   }
 

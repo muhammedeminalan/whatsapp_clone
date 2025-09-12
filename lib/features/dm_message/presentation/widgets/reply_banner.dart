@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/features/dm_message/data/model/message_model.dart';
 
 class ReplyBanner extends StatelessWidget {
@@ -14,7 +15,7 @@ class ReplyBanner extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: context.secondaryColor,
+        color: context.primary400,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -30,10 +31,10 @@ class ReplyBanner extends StatelessWidget {
                     color: Colors.black87,
                   ),
                 ),
-                const SizedBox(height: 2),
+                2.height,
                 Text(
                   message.text,
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: context.bodyMedium?.copyWith(color: Colors.black87),
                 ),
