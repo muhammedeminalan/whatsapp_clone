@@ -8,29 +8,24 @@ class DioService {
 
   late final Dio _dio;
 
-  /// Factory constructor: her yerde aynı instance döner
   factory DioService() => _instance;
 
-  /// Private constructor: sadece burada instance oluşturulur
   DioService._internal() {
     _dio = Dio(
       BaseOptions(
-        /// Base URL: tüm isteklerde kullanılacak ana URL
-        baseUrl: "https://api.example.com/",
-
         /// Header bilgileri
         headers: {
-          'Content-Type': 'application/json', // Gönderilen veri JSON formatında
-          'Accept': 'application/json', // Sunucudan JSON bekliyoruz
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
       ),
     );
 
-    /// Timeout ayarları (Dio 5 ile Duration kullanıyoruz)
+    /// Timeout ayarları
     _dio.options.connectTimeout = const Duration(seconds: 15);
     _dio.options.receiveTimeout = const Duration(seconds: 15);
 
-    /// Logging interceptor: tüm istek ve yanıtları console'a yaz
+    /// Logging interceptor
     _dio.interceptors.add(
       LogInterceptor(
         requestBody: true,
@@ -42,11 +37,11 @@ class DioService {
 
   /// GET isteği
   Future<dynamic> get(
-    String path, {
+    String url, { // artık full URL
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
-      final response = await _dio.get(path, queryParameters: queryParameters);
+      final response = await _dio.get(url, queryParameters: queryParameters);
       return _handleResponse(response);
     } on DioException catch (e) {
       throw _handleDioError(e);
@@ -54,9 +49,9 @@ class DioService {
   }
 
   /// POST isteği
-  Future<dynamic> post(String path, {dynamic data}) async {
+  Future<dynamic> post(String url, {dynamic data}) async {
     try {
-      final response = await _dio.post(path, data: data);
+      final response = await _dio.post(url, data: data);
       return _handleResponse(response);
     } on DioException catch (e) {
       throw _handleDioError(e);
@@ -64,9 +59,9 @@ class DioService {
   }
 
   /// PUT isteği
-  Future<dynamic> put(String path, {dynamic data}) async {
+  Future<dynamic> put(String url, {dynamic data}) async {
     try {
-      final response = await _dio.put(path, data: data);
+      final response = await _dio.put(url, data: data);
       return _handleResponse(response);
     } on DioException catch (e) {
       throw _handleDioError(e);
@@ -74,9 +69,9 @@ class DioService {
   }
 
   /// DELETE isteği
-  Future<dynamic> delete(String path, {dynamic data}) async {
+  Future<dynamic> delete(String url, {dynamic data}) async {
     try {
-      final response = await _dio.delete(path, data: data);
+      final response = await _dio.delete(url, data: data);
       return _handleResponse(response);
     } on DioException catch (e) {
       throw _handleDioError(e);
