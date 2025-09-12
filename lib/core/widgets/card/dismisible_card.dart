@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 
 class DismisibleCardController {
   final ValueNotifier<double> offset = ValueNotifier(0);
