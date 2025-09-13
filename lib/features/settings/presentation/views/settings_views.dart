@@ -6,10 +6,10 @@ import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
-import 'package:whatsapp_clone/features/settings/login/presentation/widgets/profil_card.dart';
-import 'package:whatsapp_clone/features/settings/login/presentation/widgets/settinngs_card.dart';
+import 'package:whatsapp_clone/features/settings/presentation/widgets/profil_card.dart';
+import 'package:whatsapp_clone/features/settings/presentation/widgets/settinngs_card.dart';
 
-import '../../../../../config/theme/cubit/theme_cubit.dart';
+import '../../../../config/theme/cubit/theme_cubit.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});

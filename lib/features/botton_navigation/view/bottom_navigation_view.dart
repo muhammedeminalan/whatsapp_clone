@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/features/botton_navigation/enum/page_type.dart';
 import '../widgets/custom_bottom_nav.dart';
 import '../../conversations/presentation/views/conversations_view.dart';
-import '../../settings/login/presentation/views/settings_views.dart';
+import '../../settings/presentation/views/settings_views.dart';
 import '../../situations/presentation/views/situations_view.dart';
 
-import '../bloc/navigation_cubit.dart';
+import '../cubit/navigation_cubit.dart';
 
 class BottomNavigationView extends StatelessWidget {
   const BottomNavigationView({super.key});

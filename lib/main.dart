@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whatsapp_clone/config/init/injection_container.dart';
+import 'package:whatsapp_clone/config/init/app_initializer.dart';
+import 'package:whatsapp_clone/config/init/bloc_providers.dart';
+import 'package:whatsapp_clone/config/theme/app_theme.dart';
 import 'package:whatsapp_clone/config/theme/cubit/theme_cubit.dart';
-import 'features/botton_navigation/bloc/navigation_cubit.dart';
-import 'features/botton_navigation/view/bottom_navigation_view.dart';
-import 'config/theme/app_theme.dart';
-import 'firebase_options.dart';
+import 'package:whatsapp_clone/features/botton_navigation/view/bottom_navigation_view.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await initializeDependencies();
-  runApp(const MyApp());
+  await initializeApp();
 }
 
 class MyApp extends StatelessWidget {
@@ -21,10 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<NavigationCubit>(create: (_) => NavigationCubit()),
-        BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
-      ],
+      providers: AppBlocProviders.providers,
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, themeMode) {
           return MaterialApp(
