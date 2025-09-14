@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
@@ -80,8 +81,11 @@ class _SettingsViewState extends State<SettingsView> {
 
   ProfilCard _profilCard(BuildContext context) {
     return ProfilCard(
-      onTap: () =>
-          context.pushPage(SettingsProfilViews(), fullscreenDialog: true),
+      onTap: () => context.pushPage(
+        SettingsProfilViews(),
+
+        transitionBuilder: AppTransitions.slideFromBottom(),
+      ),
       profilPhoto: "https://i.pravatar.cc/300",
       userName: "Muhammet Emin",
       biography: "Flutter Developer",

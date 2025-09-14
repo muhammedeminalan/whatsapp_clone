@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
 import 'package:whatsapp_clone/features/camera/presentation/cubit/camera_cubit.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
@@ -73,7 +74,7 @@ class _ConversationsViewState extends State<ConversationsView> {
                       Expanded(
                         child: ListView.builder(
                           controller: _scrollController,
-                          itemCount: 5,
+                          itemCount: 10,
                           itemBuilder: (context, index) {
                             return DismisibleCard(
                               profil:
@@ -88,9 +89,12 @@ class _ConversationsViewState extends State<ConversationsView> {
                               onMoreTap: () =>
                                   debugPrint('More button clicked'),
                               onTap: () {
-                                context.pushPage(DmMessageView());
+                                context.pushPage(
+                                  DmMessageView(),
+                                  transitionBuilder: AppTransitions.slide(),
+                                );
                               },
-                            ).paddingOnly(top: 2);
+                            ).paddingOnly(bottom: 3);
                           },
                         ),
                       ),

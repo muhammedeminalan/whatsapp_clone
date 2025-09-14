@@ -65,7 +65,7 @@ class _CameraPageState extends State<CameraPage> {
                 return Center(
                   child: Text(
                     'Kamera açılacak...',
-                    style: context.headlineLarge!,
+                    style: context.headlineLarge,
                   ),
                 );
               },

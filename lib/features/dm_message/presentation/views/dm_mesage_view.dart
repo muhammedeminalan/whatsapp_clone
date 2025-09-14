@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/profile_app_bar.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/features/dm_message/data/model/message_model.dart';
@@ -165,7 +166,7 @@ class _DmMessageViewState extends State<DmMessageView> {
           Expanded(child: _listViewBuilder()),
           if (_replyingMessage != null) _replyBanner(),
           context.divider(color: Theme.of(context).dividerColor),
-          _inputField(),
+          _inputField().paddingAll(10),
         ],
       ),
     );
