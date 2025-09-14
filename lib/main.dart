@@ -14,7 +14,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  static final _appRouter = sl<AppRouter>();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.light,
             darkTheme: AppTheme.dark,
             themeMode: themeMode,
-            routerConfig: sl<AppRouter>().config(),
+            routerConfig: _appRouter.config(),
           );
         },
       ),
