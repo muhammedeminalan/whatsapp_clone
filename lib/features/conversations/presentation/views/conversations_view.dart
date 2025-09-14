@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
@@ -9,7 +10,7 @@ import 'package:whatsapp_clone/core/widgets/card/dismisible_card.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
 import 'package:whatsapp_clone/core/widgets/text_field/costum_text_field.dart';
-import 'package:whatsapp_clone/features/dm_message/presentation/views/dm_mesage_view.dart';
+import 'package:whatsapp_clone/config/routes/app_route.dart';
 
 class ConversationsView extends StatefulWidget {
   const ConversationsView({super.key});
@@ -68,9 +69,7 @@ class _ConversationsViewState extends State<ConversationsView> {
                   controller: DismisibleCardController(onPinned: () {}),
                   onMoreTap: () => debugPrint('More button clicked'),
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => DmMessageView()),
-                    );
+                    context.router.push(const DmMessageView());
                   },
                 ).paddingOnly(left: 12, right: 12, bottom: 3);
               },

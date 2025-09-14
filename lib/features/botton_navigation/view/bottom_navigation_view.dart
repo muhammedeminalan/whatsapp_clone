@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/features/botton_navigation/enum/page_type.dart';
@@ -8,6 +9,7 @@ import '../../situations/presentation/views/situations_view.dart';
 
 import '../cubit/navigation_cubit.dart';
 
+@RoutePage()
 class BottomNavigationView extends StatelessWidget {
   const BottomNavigationView({super.key});
 
