@@ -3,9 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
+import 'package:whatsapp_clone/features/settings/presentation/views/settings_profil_views.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/profil_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/settinngs_card.dart';
 
@@ -29,7 +31,7 @@ class _SettingsViewState extends State<SettingsView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _profilCard(),
+            _profilCard(context),
             30.height,
             Text(
               "Kullanıcı Bilgileri",
@@ -76,8 +78,10 @@ class _SettingsViewState extends State<SettingsView> {
     );
   }
 
-  ProfilCard _profilCard() {
+  ProfilCard _profilCard(BuildContext context) {
     return ProfilCard(
+      onTap: () =>
+          context.pushPage(SettingsProfilViews(), fullscreenDialog: true),
       profilPhoto: "https://i.pravatar.cc/300",
       userName: "Muhammet Emin",
       biography: "Flutter Developer",

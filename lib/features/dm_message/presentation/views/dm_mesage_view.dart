@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
@@ -9,7 +8,6 @@ import 'package:whatsapp_clone/features/dm_message/presentation/widgets/message_
 import 'package:whatsapp_clone/features/dm_message/presentation/widgets/reply_banner.dart';
 import '../widgets/message_input_field.dart';
 
-@RoutePage()
 class DmMessageView extends StatefulWidget {
   const DmMessageView({super.key});
 
