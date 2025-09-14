@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
+import 'package:whatsapp_clone/core/service/camera/camera_service.dart';
 import 'package:whatsapp_clone/core/service/network/dio_service.dart';
-import 'package:whatsapp_clone/core/service/shared_prefs_service.dart';
+import 'package:whatsapp_clone/core/service/cache/shared_prefs_service.dart';
 
 final sl = GetIt.instance;
 
@@ -10,7 +11,8 @@ Future<void> initializeDependencies() async {
   await sharedPrefs.init();
   sl.registerSingleton<SharedPrefsService>(sharedPrefs);
 
-  // Router
+  // camera
+  sl.registerLazySingleton<CameraService>(() => CameraService());
 
   // Network
   sl.registerLazySingleton<DioService>(() => DioService());

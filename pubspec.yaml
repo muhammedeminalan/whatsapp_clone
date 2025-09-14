@@ -38,6 +38,7 @@ dependencies:
   #Form
   flutter_form_builder: ^10.2.0
   form_builder_validators: ^11.2.0
+  photo_manager: ^3.7.1
 
 
 dev_dependencies:

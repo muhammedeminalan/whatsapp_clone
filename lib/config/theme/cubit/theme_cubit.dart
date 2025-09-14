@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/config/init/injection_container.dart';
-import 'package:whatsapp_clone/core/service/shared_prefs_service.dart';
+import 'package:whatsapp_clone/core/service/cache/shared_prefs_service.dart';
 
 class ThemeCubit extends Cubit<ThemeMode> {
   static const String _prefKey = "isDark";

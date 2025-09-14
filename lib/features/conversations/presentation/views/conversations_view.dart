@@ -1,16 +1,20 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
-import 'package:whatsapp_clone/core/widgets/card/dismisible_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_clone/features/camera/presentation/cubit/camera_cubit.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
+import 'package:whatsapp_clone/core/widgets/card/dismisible_card.dart';
 import 'package:whatsapp_clone/core/widgets/text_field/costum_text_field.dart';
+import 'package:whatsapp_clone/features/camera/presentation/view/camera_view.dart';
 import 'package:whatsapp_clone/features/dm_message/presentation/views/dm_mesage_view.dart';
+import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 
 class ConversationsView extends StatefulWidget {
   const ConversationsView({super.key});
@@ -32,11 +36,9 @@ class _ConversationsViewState extends State<ConversationsView> {
   void _scrollListener() {
     if (_scrollController.position.userScrollDirection ==
         ScrollDirection.forward) {
-      // Scroll yukarı kaydı
       if (!_showTextField.value) _showTextField.value = true;
     } else if (_scrollController.position.userScrollDirection ==
         ScrollDirection.reverse) {
-      // Scroll aşağı kaydı
       if (_showTextField.value) _showTextField.value = false;
     }
   }
@@ -50,32 +52,55 @@ class _ConversationsViewState extends State<ConversationsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: Column(
-        children: [
-          _search(),
-          Expanded(
-            child: ListView.builder(
-              controller: _scrollController,
-              itemCount: 30,
-              itemBuilder: (context, index) {
-                return DismisibleCard(
-                  profil: 'https://i.pravatar.cc/150?img=${index + 1}',
-                  userName: 'Kullanıcı ${index + 1}',
-                  message: 'Merhaba, nasılsın? ${index + 1}',
-                  time: '2:07',
-                  unreadCount: 20,
-                  controller: DismisibleCardController(onPinned: () {}),
-                  onMoreTap: () => debugPrint('More button clicked'),
-                  onTap: () {
-                    context.pushPage(DmMessageView());
-                  },
-                ).paddingOnly(top: 2);
-              },
+    return BlocProvider(
+      create: (_) => CameraCubit(),
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: Column(
+          children: [
+            _search(),
+            Expanded(
+              child: BlocBuilder<CameraCubit, String?>(
+                builder: (context, photoPath) {
+                  return Column(
+                    children: [
+                      // Fotoğraf varsa göster
+                      if (photoPath != null)
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.file(File(photoPath), height: 200),
+                        ),
+                      Expanded(
+                        child: ListView.builder(
+                          controller: _scrollController,
+                          itemCount: 5,
+                          itemBuilder: (context, index) {
+                            return DismisibleCard(
+                              profil:
+                                  'https://i.pravatar.cc/150?img=${index + 1}',
+                              userName: 'Fake User ${index + 1}',
+                              message: 'Merhaba, nasılsın? ${index + 1}',
+                              time: '2:07',
+                              unreadCount: 0,
+                              controller: DismisibleCardController(
+                                onPinned: () {},
+                              ),
+                              onMoreTap: () =>
+                                  debugPrint('More button clicked'),
+                              onTap: () {
+                                context.pushPage(DmMessageView());
+                              },
+                            ).paddingOnly(top: 2);
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -103,7 +128,7 @@ class _ConversationsViewState extends State<ConversationsView> {
       titleText: "Sohbetler",
       leading: _more_icon_button(onTap: () {}),
       actions: [
-        _camera_icon_button(onTap: () {}),
+        _camera_icon_button(onTap: () => context.pushPage(CameraPage())),
         12.width,
         _add_icon_button(onTap: () {}),
         8.width,

@@ -45,5 +45,13 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- Kamera ve Galeri izinleri -->
+	<key>NSCameraUsageDescription</key>
+	<string>Uygulama fotoğraf çekmek için kamerayı kullanacak</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Uygulama fotoğraf galerisine erişecek</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Uygulama fotoğraf galerisine kaydedebilir</string>
 </dict>
 </plist>

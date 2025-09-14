@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
+import 'package:whatsapp_clone/features/camera/presentation/view/camera_view.dart';
 import 'package:whatsapp_clone/features/situations/presentation/widgets/status_add_list_title.dart';
 import 'package:whatsapp_clone/features/situations/presentation/widgets/status_list_title.dart';
 
@@ -54,7 +56,7 @@ class _SituationsViewState extends State<SituationsView> {
       profileImageUrl: "https://i.pravatar.cc/150?img=1",
       userName: 'Wonzy',
       onAddPressed: () => debugPrint('Add button clicked'),
-      cameraPressed: () => debugPrint('Call clicked'),
+      cameraPressed: () => context.pushPage(CameraPage()),
       textPressed: () => debugPrint('Message clicked'),
     );
   }
