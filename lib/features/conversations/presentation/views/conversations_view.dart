@@ -1,21 +1,16 @@
-// ignore_for_file: non_constant_identifier_names
-
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
-import 'package:whatsapp_clone/features/camera/presentation/cubit/camera_cubit.dart';
-import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
+import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/features/camera/presentation/view/camera_view.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
+import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
 import 'package:whatsapp_clone/core/widgets/card/dismisible_card.dart';
 import 'package:whatsapp_clone/core/widgets/text_field/costum_text_field.dart';
-import 'package:whatsapp_clone/features/camera/presentation/view/camera_view.dart';
 import 'package:whatsapp_clone/features/dm_message/presentation/views/dm_mesage_view.dart';
 import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
 
 class ConversationsView extends StatefulWidget {
   const ConversationsView({super.key});
@@ -53,58 +48,41 @@ class _ConversationsViewState extends State<ConversationsView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CameraCubit(),
-      child: Scaffold(
-        appBar: _buildAppBar(),
-        body: Column(
-          children: [
-            _search(),
-            Expanded(
-              child: BlocBuilder<CameraCubit, String?>(
-                builder: (context, photoPath) {
-                  return Column(
-                    children: [
-                      // Fotoğraf varsa göster
-                      if (photoPath != null)
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Image.file(File(photoPath), height: 200),
-                        ),
-                      Expanded(
-                        child: ListView.builder(
-                          controller: _scrollController,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            return DismisibleCard(
-                              profil:
-                                  'https://i.pravatar.cc/150?img=${index + 1}',
-                              userName: 'Fake User ${index + 1}',
-                              message: 'Merhaba, nasılsın? ${index + 1}',
-                              time: '2:07',
-                              unreadCount: 0,
-                              controller: DismisibleCardController(
-                                onPinned: () {},
-                              ),
-                              onMoreTap: () =>
-                                  debugPrint('More button clicked'),
-                              onTap: () {
-                                context.pushPage(
-                                  DmMessageView(),
-                                  transitionBuilder: AppTransitions.slide(),
-                                );
-                              },
-                            ).paddingOnly(bottom: 3);
-                          },
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: Column(
+        children: [
+          _search(),
+          Expanded(
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return DismisibleCard(
+                        profil: 'https://i.pravatar.cc/150?img=${index + 1}',
+                        userName: 'Fake User ${index + 1}',
+                        message: 'Merhaba, nasılsın? ${index + 1}',
+                        time: '2:07',
+                        unreadCount: 0,
+                        controller: DismisibleCardController(onPinned: () {}),
+                        onMoreTap: () => debugPrint('More button clicked'),
+                        onTap: () {
+                          context.pushPage(
+                            DmMessageView(),
+                            transitionBuilder: AppTransitions.slide(),
+                          );
+                        },
+                      ).paddingOnly(bottom: 3);
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -119,7 +97,7 @@ class _ConversationsViewState extends State<ConversationsView> {
           child: show
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: CostumTextField(prefixIcon: Icon(Icons.search)),
+                  child: CostumTextField(prefixIcon: const Icon(Icons.search)),
                 )
               : null,
         );
@@ -130,24 +108,24 @@ class _ConversationsViewState extends State<ConversationsView> {
   CoreAppBar _buildAppBar() {
     return CoreAppBar(
       titleText: "Sohbetler",
-      leading: _more_icon_button(onTap: () {}),
+      leading: _moreIcon(onTap: () {}),
       actions: [
-        _camera_icon_button(onTap: () => context.pushPage(CameraPage())),
+        _cameraIcon(onTap: () => context.pushPage(const CameraPage())),
         12.width,
-        _add_icon_button(onTap: () {}),
+        _addIcon(onTap: () {}),
         8.width,
       ],
     );
   }
 
-  IconButton _more_icon_button({void Function()? onTap}) {
+  IconButton _moreIcon({void Function()? onTap}) {
     return IconButton(
       icon: CostumIconButton(icon: Icons.more_horiz, onTap: onTap),
       onPressed: () {},
     );
   }
 
-  CostumIconButton _add_icon_button({void Function()? onTap}) {
+  CostumIconButton _addIcon({void Function()? onTap}) {
     return CostumIconButton(
       icon: Icons.add,
       onTap: onTap,
@@ -156,6 +134,6 @@ class _ConversationsViewState extends State<ConversationsView> {
     );
   }
 
-  CostumIconButton _camera_icon_button({void Function()? onTap}) =>
+  CostumIconButton _cameraIcon({void Function()? onTap}) =>
       CostumIconButton(icon: Icons.camera_alt, onTap: onTap);
 }

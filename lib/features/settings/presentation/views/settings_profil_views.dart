@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/axis_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/log_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/string_extensions.dart';
@@ -59,7 +60,9 @@ class _SettingsProfilViewsState extends State<SettingsProfilViews> {
       imageUrl: "https://i.pravatar.cc/300",
       label: "Düzenle",
 
-      editTap: () => debugPrint("düzenle tıklandı"),
+      editTap: () {
+        return FancyBottomSheet.show(context, content: Column());
+      },
     );
   }
 
