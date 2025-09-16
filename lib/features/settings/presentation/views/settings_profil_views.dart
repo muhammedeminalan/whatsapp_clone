@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/core/utils/extensions/axis_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/log_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/string_extensions.dart';
