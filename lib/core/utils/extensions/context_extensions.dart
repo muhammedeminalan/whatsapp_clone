@@ -21,6 +21,9 @@ extension ContextExtension on BuildContext {
   /// Boşluklar
   Divider divider({Color? color}) => Divider(color: color);
 
+  ///theme data
+  ThemeData get theme => Theme.of(this);
+
   /// Renkler
   Color get primaryColor =>
       Theme.of(this).colorScheme.primary; // Color(0xFF075E54);

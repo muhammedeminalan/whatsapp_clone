@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';

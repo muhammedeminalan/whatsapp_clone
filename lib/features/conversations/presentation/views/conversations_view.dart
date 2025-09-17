@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
 import 'package:whatsapp_clone/features/camera/presentation/view/camera_view.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
 import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';

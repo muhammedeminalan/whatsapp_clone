@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';

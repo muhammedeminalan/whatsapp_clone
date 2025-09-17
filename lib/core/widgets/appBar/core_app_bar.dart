@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/extensions/content_extensions.dart';
+import '../../utils/extensions/context_extensions.dart';
 
 class CoreAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? titleText; // Basit başlık metni

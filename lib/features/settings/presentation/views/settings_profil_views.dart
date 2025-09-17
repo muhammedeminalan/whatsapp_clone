@@ -1,11 +1,16 @@
 // ignore_for_file: must_be_immutable, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_clone/core/service/camera/cubit/camera_cubit.dart';
 import 'package:whatsapp_clone/core/utils/extensions/axis_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/content_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/colum_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/string_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/text_extensions.dart';
 import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
 import 'package:whatsapp_clone/core/widgets/bottom_sheet/fancy_bottom_sheet.dart';
 import 'package:whatsapp_clone/core/widgets/text_field/gmail_text_field.dart';
@@ -14,6 +19,7 @@ import 'package:whatsapp_clone/core/widgets/text_field/random_username_field.dar
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/about_me_field.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/edit_profil_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/editabled_card.dart';
+import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/settings_profil_card.dart';
 
 class SettingsProfilViews extends StatefulWidget {
   const SettingsProfilViews({super.key});
@@ -39,17 +45,14 @@ class _SettingsProfilViewsState extends State<SettingsProfilViews> {
   SafeArea _buildBody(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
-        child: Column(
-          spacing: 10,
-          children: [
-            _profilAndEdit(),
-            _userName(context),
-            _aboutMe(context),
-            _phone(context),
-            _gmail(context),
-            _logOutButton(context),
-          ],
-        ),
+        child: [
+          _profilAndEdit(),
+          _userName(context),
+          _aboutMe(context),
+          _phone(context),
+          _gmail(context),
+          _logOutButton(context),
+        ].column(spacing: 10),
       ),
     );
   }
@@ -58,9 +61,39 @@ class _SettingsProfilViewsState extends State<SettingsProfilViews> {
     return EditProfileCard(
       imageUrl: "https://i.pravatar.cc/300",
       label: "Düzenle",
-
       editTap: () {
-        return FancyBottomSheet.show(context, content: Column());
+        return FancyBottomSheet.show(
+          context,
+          isSavedButton: false,
+          isClosedButton: false,
+          initialChildSize: 0.35,
+          content: [
+            SettingsProfilCard(
+              settingsName: "Fotograf seç",
+              trailingIcon: Icons.photo_camera_back_outlined,
+              onTap: () {
+                context.read<CameraCubit>().pickFromGallery();
+                context.pop();
+              },
+            ),
+            SettingsProfilCard(
+              settingsName: "Fotograf çek",
+              trailingIcon: Icons.photo_camera_outlined,
+
+              onTap: () {
+                context.read<CameraCubit>().takePhoto();
+              },
+            ),
+            20.height,
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                "Fotografı sil",
+                style: context.titleMedium!.copyWith(color: context.errorColor),
+              ),
+            ),
+          ].column(),
+        );
       },
     );
   }
@@ -77,9 +110,9 @@ class _SettingsProfilViewsState extends State<SettingsProfilViews> {
             children: [
               GmailTextField(),
               10.height,
-              Text(
-                "E-posta adresinizle hesabınızı güvenle bağlayın 🔒 ",
-                style: context.bodyMedium,
+
+              "E-posta adresinizle hesabınızı güvenle bağlayın 🔒 ".text(
+                textStyle: context.bodyMedium,
               ),
             ],
           ).crossStart,
@@ -96,16 +129,14 @@ class _SettingsProfilViewsState extends State<SettingsProfilViews> {
         FancyBottomSheet.show(
           context,
           title: "Telefon",
-          content: Column(
-            children: [
-              TurkeyPhoneField(),
-              10.height,
-              Text(
-                "Telefon numaranızı girin, başında 0 veya +90 ile  ",
-                style: context.bodyMedium,
-              ),
-            ],
-          ).crossStart,
+          content: [
+            TurkeyPhoneField(),
+            10.height,
+
+            "Telefon numaranızı girin, başında 0 veya +90 ile  ".text(
+              textStyle: context.bodyMedium,
+            ),
+          ].column(crossAxisAlignment: CrossAxisAlignment.start),
         );
       },
     );

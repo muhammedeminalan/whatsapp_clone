@@ -10,7 +10,8 @@ class FancyBottomSheet extends StatelessWidget {
   final Color? actionColor;
   final VoidCallback? onClose;
   final VoidCallback? onSave;
-  final bool showSaveButton;
+  final bool isClosedButton;
+  final bool isSavedButton;
 
   const FancyBottomSheet({
     super.key,
@@ -22,7 +23,8 @@ class FancyBottomSheet extends StatelessWidget {
     this.actionColor,
     this.onClose,
     this.onSave,
-    this.showSaveButton = true,
+    this.isClosedButton = true,
+    this.isSavedButton = true,
   });
 
   /// Widgeti göstermek için kolay static fonksiyon
@@ -36,7 +38,8 @@ class FancyBottomSheet extends StatelessWidget {
     Color? actionColor,
     VoidCallback? onClose,
     VoidCallback? onSave,
-    bool showSaveButton = true,
+    bool isClosedButton = true,
+    bool isSavedButton = true,
   }) {
     showModalBottomSheet(
       context: context,
@@ -51,7 +54,8 @@ class FancyBottomSheet extends StatelessWidget {
         actionColor: actionColor,
         onClose: onClose,
         onSave: onSave,
-        showSaveButton: showSaveButton,
+        isClosedButton: isClosedButton,
+        isSavedButton: isSavedButton,
       ),
     );
   }
@@ -83,21 +87,26 @@ class FancyBottomSheet extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconButton(
-                        icon: const Icon(Icons.close),
-                        onPressed: onClose ?? () => Navigator.of(context).pop(),
-                      ),
-                      if (title != null)
-                        Text(
-                          title!,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleLarge?.copyWith(color: tColor),
+                      if (isClosedButton)
+                        IconButton(
+                          icon: const Icon(Icons.close),
+                          onPressed:
+                              onClose ?? () => Navigator.of(context).pop(),
                         ),
-                      if (showSaveButton)
+                      if (title != null)
+                        Expanded(
+                          child: Text(
+                            title!,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.titleLarge?.copyWith(color: tColor),
+                          ),
+                        ),
+                      if (isSavedButton)
                         TextButton(
                           onPressed: () {
-                            onSave;
+                            if (onSave != null) onSave!();
                             context.pop();
                           },
                           child: Text(

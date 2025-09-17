@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../utils/extensions/content_extensions.dart';
+import '../../utils/extensions/context_extensions.dart';
 
 class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? titleText;
