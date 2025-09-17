@@ -1,10 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/full_screen_profil_widget.dart';
+import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 
 class EditProfileCard extends StatelessWidget {
   final String imageUrl;

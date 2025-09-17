@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 
 class FullScreenProfilWidget extends StatefulWidget {
   final String imageUrl;

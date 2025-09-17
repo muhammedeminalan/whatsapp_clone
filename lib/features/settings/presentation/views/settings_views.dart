@@ -3,15 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
-import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
 import 'package:whatsapp_clone/features/settings/presentation/views/settings_profil_views.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/profil_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/settinngs_card.dart';
-
+import 'package:whatsapp_clone/core/utils/extensions/index.dart';
+import 'package:whatsapp_clone/core/widgets/index.dart';
 import '../../../../config/theme/cubit/theme_cubit.dart';
 
 class SettingsView extends StatefulWidget {

@@ -6,3 +6,4 @@ export 'text_field/costum_text_field.dart';
 export 'text_field/gmail_text_field.dart';
 export 'text_field/phone_text_field.dart';
 export 'text_field/random_username_field.dart';
+export 'button/costum_icon_button.dart';

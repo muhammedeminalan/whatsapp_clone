@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
 import 'package:whatsapp_clone/core/service/camera/cubit/camera_cubit.dart';
 import 'package:whatsapp_clone/core/service/camera/cubit/camera_state.dart';
+import 'package:whatsapp_clone/core/widgets/index.dart';
 
 class CameraPage extends StatelessWidget {
   const CameraPage({super.key});

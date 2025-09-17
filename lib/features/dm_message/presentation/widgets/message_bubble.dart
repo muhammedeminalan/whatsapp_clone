@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
 import 'package:whatsapp_clone/features/dm_message/data/model/message_model.dart';
+import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 
 class SwipeableMessageBubble extends StatefulWidget {
   final MessageModel message;

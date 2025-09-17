@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
+import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 
 class SettingsProfilCard extends StatelessWidget {
   final String settingsName;

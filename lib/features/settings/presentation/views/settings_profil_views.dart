@@ -3,23 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/service/camera/cubit/camera_cubit.dart';
-import 'package:whatsapp_clone/core/utils/extensions/axis_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/colum_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/context_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/num_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/paddings_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/string_extensions.dart';
-import 'package:whatsapp_clone/core/utils/extensions/text_extensions.dart';
-import 'package:whatsapp_clone/core/widgets/appBar/core_app_bar.dart';
-import 'package:whatsapp_clone/core/widgets/bottom_sheet/fancy_bottom_sheet.dart';
-import 'package:whatsapp_clone/core/widgets/text_field/gmail_text_field.dart';
-import 'package:whatsapp_clone/core/widgets/text_field/phone_text_field.dart';
-import 'package:whatsapp_clone/core/widgets/text_field/random_username_field.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/about_me_field.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/edit_profil_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/editabled_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/settings_profil_card.dart';
+import 'package:whatsapp_clone/core/utils/extensions/index.dart';
+import 'package:whatsapp_clone/core/widgets/index.dart';
 
 class SettingsProfilViews extends StatefulWidget {
   const SettingsProfilViews({super.key});
