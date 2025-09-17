@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whatsapp_clone/config/init/app_initializer.dart';
-import 'package:whatsapp_clone/config/init/bloc_providers.dart';
-import 'package:whatsapp_clone/config/theme/app_theme.dart';
-import 'package:whatsapp_clone/config/theme/cubit/theme_cubit.dart';
-import 'package:whatsapp_clone/features/botton_navigation/view/bottom_navigation_view.dart';
+import 'config/init/app_initializer.dart';
+import 'config/init/bloc_providers.dart';
+import 'config/theme/app_theme.dart';
+import 'config/theme/cubit/theme_cubit.dart';
+import 'features/botton_navigation/view/bottom_navigation_view.dart';
 
 Future<void> main() async {
   await initializeApp();

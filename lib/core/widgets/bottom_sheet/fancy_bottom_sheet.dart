@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/navigator_extensions.dart';
+import '../../utils/extensions/navigator_extensions.dart';
 
 class FancyBottomSheet extends StatelessWidget {
   final String? title;

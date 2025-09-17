@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/config/theme/colors/primary_colors.dart';
-import 'package:whatsapp_clone/config/theme/colors/secondary_colors.dart';
+import '../../../config/theme/colors/primary_colors.dart';
+import '../../../config/theme/colors/secondary_colors.dart';
 
 extension ContextExtension on BuildContext {
   /// Ekran boyutları

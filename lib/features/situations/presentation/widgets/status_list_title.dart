@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/index.dart';
+import '../../../../core/utils/extensions/index.dart';
 
 class StatusListTile extends StatelessWidget {
   final String userName;

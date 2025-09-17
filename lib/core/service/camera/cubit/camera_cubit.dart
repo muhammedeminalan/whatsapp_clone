@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'package:whatsapp_clone/config/init/injection_container.dart';
-import 'package:whatsapp_clone/core/service/camera/camera_service.dart';
-import 'package:whatsapp_clone/core/utils/extensions/log_extensions.dart';
+import '../../../../config/init/injection_container.dart';
+import '../camera_service.dart';
+import '../../../utils/extensions/log_extensions.dart';
 import 'camera_state.dart';
 
 /// Kamera işlemlerini yöneten Cubit

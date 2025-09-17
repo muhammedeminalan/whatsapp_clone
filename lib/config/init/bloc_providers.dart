@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whatsapp_clone/config/theme/cubit/theme_cubit.dart';
-import 'package:whatsapp_clone/core/service/camera/cubit/camera_cubit.dart';
-import 'package:whatsapp_clone/features/botton_navigation/cubit/navigation_cubit.dart';
+import '../theme/cubit/theme_cubit.dart';
+import '../../core/service/camera/cubit/camera_cubit.dart';
+import '../../features/botton_navigation/cubit/navigation_cubit.dart';
 
 class AppBlocProviders {
   static List<BlocProvider> providers = [

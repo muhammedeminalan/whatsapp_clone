@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
-import 'package:whatsapp_clone/features/camera/presentation/view/camera_view.dart';
-import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
-import 'package:whatsapp_clone/features/dm_message/presentation/views/dm_mesage_view.dart';
-import 'package:whatsapp_clone/core/utils/extensions/index.dart';
-import 'package:whatsapp_clone/core/widgets/index.dart';
+import '../../../../core/transitions/app_transitions.dart';
+import '../../../camera/presentation/view/camera_view.dart';
+import '../../../dm_message/presentation/views/dm_mesage_view.dart';
+import '../../../../core/utils/extensions/index.dart';
+import '../../../../core/widgets/index.dart';
 
 class ConversationsView extends StatefulWidget {
   const ConversationsView({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/index.dart';
-import 'package:whatsapp_clone/core/widgets/index.dart';
+import '../../../../core/utils/extensions/index.dart';
+import '../../../../core/widgets/index.dart';
 
 class StatusAddListTile extends StatelessWidget {
   final String profileImageUrl;

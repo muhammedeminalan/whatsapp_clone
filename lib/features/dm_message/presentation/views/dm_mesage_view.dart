@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/widgets/appBar/profile_app_bar.dart';
-import 'package:whatsapp_clone/core/widgets/button/costum_icon_button.dart';
-import 'package:whatsapp_clone/features/dm_message/data/model/message_model.dart';
-import 'package:whatsapp_clone/features/dm_message/presentation/widgets/message_bubble.dart';
-import 'package:whatsapp_clone/features/dm_message/presentation/widgets/reply_banner.dart';
+import '../../data/model/message_model.dart';
+import '../widgets/message_bubble.dart';
+import '../widgets/reply_banner.dart';
 import '../widgets/message_input_field.dart';
-import 'package:whatsapp_clone/core/utils/extensions/index.dart';
-import 'package:whatsapp_clone/core/widgets/index.dart';
+import '../../../../core/utils/extensions/index.dart';
+import '../../../../core/widgets/index.dart';
 
 class DmMessageView extends StatefulWidget {
   const DmMessageView({super.key});

@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:whatsapp_clone/core/service/camera/camera_service.dart';
-import 'package:whatsapp_clone/core/service/network/dio_service.dart';
-import 'package:whatsapp_clone/core/service/cache/shared_prefs_service.dart';
+import '../../core/service/camera/camera_service.dart';
+import '../../core/service/network/dio_service.dart';
+import '../../core/service/cache/shared_prefs_service.dart';
 
 final sl = GetIt.instance;
 

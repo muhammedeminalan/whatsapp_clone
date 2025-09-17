@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:whatsapp_clone/config/init/injection_container.dart';
-import 'package:whatsapp_clone/firebase_options.dart';
-import 'package:whatsapp_clone/main.dart';
+import 'injection_container.dart';
+import '../../firebase_options.dart';
+import '../../main.dart';
 
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/core/utils/extensions/string_extensions.dart';
+import '../../utils/extensions/string_extensions.dart';
 
 class RandomUsernameField extends StatefulWidget {
   final String label;
