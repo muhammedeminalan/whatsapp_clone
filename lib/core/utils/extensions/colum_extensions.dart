@@ -15,8 +15,9 @@ extension ColumnExtension on List<Widget> {
     List<Widget> spacedChildren = [];
     for (int i = 0; i < length; i++) {
       spacedChildren.add(this[i]);
-      if (i != length - 1 && spacing > 0)
+      if (i != length - 1 && spacing > 0) {
         spacedChildren.add(SizedBox(height: spacing));
+      }
     }
 
     return Column(

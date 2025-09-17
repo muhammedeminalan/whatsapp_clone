@@ -91,7 +91,7 @@ extension StringExtensions on String {
   /// Belirli bir uzunluktan sonra "..." ekler
   String ellipsis(int maxLength) {
     if (length <= maxLength) return this;
-    return substring(0, maxLength) + '...';
+    return '${substring(0, maxLength)}...';
   }
 
   /// String'i ters çevirir: "abc" -> "cba"
