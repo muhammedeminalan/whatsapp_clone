@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
+import 'package:whatsapp_clone/features/settings/presentation/views/setting_views/chat_view.dart';
+import 'package:whatsapp_clone/features/settings/presentation/views/setting_views/notification_view.dart';
 import 'package:whatsapp_clone/features/settings/presentation/views/settings_profil_views.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/profil_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/settinngs_card.dart';
@@ -25,39 +27,33 @@ class _SettingsViewState extends State<SettingsView> {
       appBar: _buildAppBar(),
 
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _profilCard(context),
-            30.height,
-            Text(
-              "Kullanıcı Bilgileri",
-              style: context.titleSmall,
-            ).paddingHorizontal(15),
-            SettinngsCard(settingsName: "Kullanıcı Adı"),
-            SettinngsCard(settingsName: "Telefon Numarası"),
-            SettinngsCard(settingsName: "E-posta"),
-            SettinngsCard(settingsName: "Hakkında"),
+        child: [
+          20.height,
+          _profilCard(context),
+          20.height,
 
-            30.height,
-            Text(
-              "Sobet Bilgileri",
-              style: context.titleSmall,
-            ).paddingHorizontal(15),
-            SettinngsCard(settingsName: "Sohbetler"),
-            SettinngsCard(settingsName: "Bildirimler"),
-            SettinngsCard(settingsName: "Tüm Sohbeti Sil"),
-            SettinngsCard(settingsName: "Depolama ve Veri"),
-            30.height,
-            Text("Tema", style: context.titleSmall).paddingHorizontal(15),
-            _temaSwitch(context),
-          ],
-        ).paddingOnly(top: 10),
+          "Sobet Bilgileri"
+              .text(textStyle: context.titleSmall)
+              .paddingHorizontal(15),
+          SettinngsCard(
+            settingsName: "Sohbetler",
+            onTap: () => context.pushPage(ChatView(), fullscreenDialog: true),
+          ),
+          SettinngsCard(
+            settingsName: "Bildirimler",
+            onTap: () => context.pushPage(NotificationView()),
+          ),
+          SettinngsCard(settingsName: "Tüm Sohbeti Sil"),
+          SettinngsCard(settingsName: "Depolama ve Veri"),
+          30.height,
+          "Tema".text(textStyle: context.titleSmall).paddingHorizontal(15),
+          _temaSwitch(context),
+        ].column(crossAxisAlignment: CrossAxisAlignment.start),
       ),
     );
   }
 
-  Card _temaSwitch(BuildContext context) {
+  Widget _temaSwitch(BuildContext context) {
     return Card(
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
@@ -72,7 +68,7 @@ class _SettingsViewState extends State<SettingsView> {
           },
         ),
       ),
-    );
+    ).paddingHorizontal(8);
   }
 
   ProfilCard _profilCard(BuildContext context) {

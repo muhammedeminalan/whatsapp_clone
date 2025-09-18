@@ -5,21 +5,15 @@ import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 
 class SettinngsCard extends StatelessWidget {
   final String settingsName;
-  final Widget page;
+  final void Function()? onTap;
 
-  const SettinngsCard({
-    super.key,
-    required this.settingsName,
-    this.page = const SizedBox.shrink(),
-  });
+  const SettinngsCard({super.key, required this.settingsName, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        onTap: () {
-          context.pushPage(page);
-        },
+        onTap: onTap,
         leading: Icon(Icons.settings),
         title: Text(settingsName, style: context.titleMedium),
         trailing: Icon(Icons.arrow_forward_ios_rounded),
