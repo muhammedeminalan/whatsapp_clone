@@ -54,7 +54,7 @@ class PhoneStorageCard extends StatelessWidget {
           usedPercentage,
           safeTotalStorage,
         ),
-        20.height,
+        10.height,
         _buildStorageInfoRow(context, freeSpace),
       ],
     );
@@ -68,7 +68,7 @@ class PhoneStorageCard extends StatelessWidget {
   ) {
     return SizedBox(
       width: 190,
-      height: 100,
+      height: 75,
       child: Stack(
         children: [
           _buildCircularProgressBar(usedPercentage),
