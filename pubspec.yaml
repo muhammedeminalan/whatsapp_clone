@@ -24,6 +24,7 @@ dependencies:
        
   #local storage
   shared_preferences: ^2.1.1
+  path_provider: ^2.1.4
          
   # Images & Camera 
   image_picker: ^1.2.0               

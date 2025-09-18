@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
 import 'package:whatsapp_clone/features/settings/presentation/views/setting_views/chat_view.dart';
 import 'package:whatsapp_clone/features/settings/presentation/views/setting_views/notification_view.dart';
+import 'package:whatsapp_clone/features/settings/presentation/views/setting_views/storage_view.dart';
 import 'package:whatsapp_clone/features/settings/presentation/views/settings_profil_views.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/profil_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/settinngs_card.dart';
@@ -44,7 +45,12 @@ class _SettingsViewState extends State<SettingsView> {
             onTap: () => context.pushPage(NotificationView()),
           ),
           SettinngsCard(settingsName: "Tüm Sohbeti Sil"),
-          SettinngsCard(settingsName: "Depolama ve Veri"),
+          SettinngsCard(
+            settingsName: "Depolama ve Veri",
+            onTap: () {
+              context.pushPage(StorageView());
+            },
+          ),
           30.height,
           "Tema".text(textStyle: context.titleSmall).paddingHorizontal(15),
           _temaSwitch(context),
