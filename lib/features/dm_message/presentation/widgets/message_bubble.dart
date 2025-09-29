@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:whatsapp_clone/core/widgets/bottom_sheet/fancy_bottom_sheet.dart';
+import 'package:whatsapp_clone/core/widgets/card/costum_list_title.dart';
 import '../../data/model/message_model.dart';
 import '../../../../core/utils/extensions/index.dart';
 
@@ -6,12 +9,16 @@ class SwipeableMessageBubble extends StatefulWidget {
   final MessageModel message;
   final void Function(MessageModel) onSwipe;
   final String Function(DateTime) formatTime;
+  final VoidCallback? onDelete;
+  final VoidCallback? onEdit;
 
   const SwipeableMessageBubble({
     super.key,
     required this.message,
     required this.onSwipe,
     required this.formatTime,
+    this.onDelete,
+    this.onEdit,
   });
 
   @override
@@ -42,6 +49,51 @@ class _SwipeableMessageBubbleState extends State<SwipeableMessageBubble>
     await _controller.reverse();
   }
 
+  void _showOptionsSheet() {
+    return FancyBottomSheet.show(
+      context,
+      title: "Mesaj Seçenekleri",
+      initialChildSize: 0.40,
+      isSavedButton: false,
+      content: [
+        CustomListTitle(
+          title: "Yanıtla",
+          leadingIcon: Icons.reply,
+          onTap: () {
+            Navigator.of(context).pop();
+            widget.onSwipe(widget.message);
+          },
+        ),
+        CustomListTitle(
+          title: "Kopyala",
+          leadingIcon: Icons.copy,
+          onTap: () {
+            Navigator.of(context).pop();
+            Clipboard.setData(ClipboardData(text: widget.message.text));
+          },
+        ),
+        CustomListTitle(
+          title: "Düzenle",
+          leadingIcon: Icons.edit_sharp,
+          onTap: () {
+            context.pop();
+            widget.onEdit?.call();
+          },
+        ),
+        CustomListTitle(
+          leadingIcon: Icons.delete,
+          leadingIconColor: context.errorColor,
+          titleColor: context.errorColor,
+          title: "Sil",
+          onTap: () {
+            context.pop();
+            widget.onDelete?.call();
+          },
+        ),
+      ].column(spacing: 0),
+    );
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -50,13 +102,14 @@ class _SwipeableMessageBubbleState extends State<SwipeableMessageBubble>
 
   @override
   Widget build(BuildContext context) {
-    final radius = Radius.circular(15);
+    final radius = const Radius.circular(15);
     return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.primaryVelocity != null && details.primaryVelocity! > 0) {
           _handleSwipe();
         }
       },
+      onLongPress: _showOptionsSheet,
       child: SlideTransition(
         position: _offsetAnimation,
         child: Align(
