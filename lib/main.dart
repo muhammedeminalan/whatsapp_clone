@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/features/auth_features/login/presentation/views/login_view.dart';
-import 'package:whatsapp_clone/features/botton_navigation/view/bottom_navigation_view.dart';
 import 'config/init/app_initializer.dart';
 import 'config/init/bloc_providers.dart';
 import 'config/theme/app_theme.dart';
