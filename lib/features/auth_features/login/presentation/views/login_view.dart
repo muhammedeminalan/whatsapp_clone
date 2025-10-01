@@ -8,6 +8,7 @@ import 'package:whatsapp_clone/core/constants/icons/icons_const.dart';
 import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 import 'package:whatsapp_clone/features/auth_features/register/presentation/views/register_view.dart';
+import 'package:whatsapp_clone/features/botton_navigation/view/bottom_navigation_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -158,8 +159,10 @@ class _LoginViewState extends State<LoginView> {
         if (_formKey.currentState?.saveAndValidate() ?? false) {
           final values = _formKey.currentState!.value;
           "Login Values: $values".infoLog();
+          context.pushPage(BottomNavigationView());
         } else {
           "Form validation hatalı".errorLog();
+          context.pushPage(BottomNavigationView());
         }
       },
       child: "Giriş Yap".text(

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/core/service/camera/cubit/camera_cubit.dart';
+import 'package:whatsapp_clone/features/auth_features/login/presentation/views/login_view.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/about_me_field.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/edit_profil_card.dart';
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/editabled_card.dart';
@@ -186,6 +187,10 @@ class _SettingsProfilViewsState extends State<SettingsProfilViews> {
     return TextButton(
       onPressed: () {
         //TODO Buraya çıkış yap işlemi gelecek
+        /*     context.pushAndRemoveUntilPage(
+          LoginView(),
+          predicate: (route) => false,
+        ); */
       },
       child: Text(
         "Çıkış Yap",

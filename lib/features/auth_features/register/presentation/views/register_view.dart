@@ -6,6 +6,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:whatsapp_clone/core/constants/icons/icons_const.dart';
 import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 
+import '../../../../../core/constants/form/form_keys.dart';
+
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
@@ -14,7 +16,7 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  final _formKey = GlobalKey<FormBuilderState>();
+  final _formKey = FormKeys.registerFormKey;
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
 
@@ -203,7 +205,6 @@ class _RegisterViewState extends State<RegisterView> {
   }
 
   // Giriş Yap Butonu
-
   Widget _buildLoginRedirectButton() {
     return TextButton(
       onPressed: () {
