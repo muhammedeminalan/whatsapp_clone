@@ -173,7 +173,7 @@ class _LoginViewState extends State<LoginView> {
   Widget _buildRegisterButton() {
     return TextButton(
       onPressed: () {
-        // TODO: RegisterView sayfasına yönlendirme
+        //  RegisterView sayfasına yönlendirme
         context.pushPage(
           RegisterView(),
           transitionBuilder: AppTransitions.fadeIn(),

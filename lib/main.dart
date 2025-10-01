@@ -5,7 +5,6 @@ import 'config/init/app_initializer.dart';
 import 'config/init/bloc_providers.dart';
 import 'config/theme/app_theme.dart';
 import 'config/theme/cubit/theme_cubit.dart';
-import 'features/botton_navigation/view/bottom_navigation_view.dart';
 
 Future<void> main() async {
   await initializeApp();
