@@ -9,4 +9,6 @@ class FormKeys {
       GlobalKey<FormBuilderState>();
   static final GlobalKey<FormBuilderState> phoneFormKey =
       GlobalKey<FormBuilderState>();
+  static final GlobalKey<FormBuilderState> loginFormKey =
+      GlobalKey<FormBuilderState>();
 }

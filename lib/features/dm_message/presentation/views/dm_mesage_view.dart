@@ -42,12 +42,12 @@ class DmMessageView extends StatelessWidget {
               actions: [
                 CostumIconButton(
                   icon: Icons.video_call,
-                  onTap: () => debugPrint('Video call'),
+                  onTap: () => "Video call".infoLog(),
                 ),
                 14.width,
                 CostumIconButton(
                   icon: Icons.call,
-                  onTap: () => debugPrint('Call'),
+                  onTap: () => "telefon çalındı ".infoLog(),
                 ),
                 14.width,
               ],

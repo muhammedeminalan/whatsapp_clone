@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 extension NavigatorExtensions on BuildContext {
   NavigatorState get navigator => Navigator.of(this);
-
+  
   Future<T?> pushPage<T>(
     Widget page, {
     bool fullscreenDialog = false,
