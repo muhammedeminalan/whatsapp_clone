@@ -5,6 +5,9 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:whatsapp_clone/core/constants/icons/icons_const.dart';
 import 'package:whatsapp_clone/core/utils/extensions/index.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_clone/features/auth_features/register/presentation/bloc/register_bloc.dart';
+// request model kullanımı kaldırıldı
 
 import '../../../../../core/constants/form/form_keys.dart';
 
@@ -184,23 +187,52 @@ class _RegisterViewState extends State<RegisterView> {
 
   // Kayıt Ol Butonu
   Widget _buildRegisterButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: context.theme.colorScheme.secondary,
-        minimumSize: const Size.fromHeight(48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      ),
-      onPressed: () {
-        if (_formKey.currentState?.saveAndValidate() ?? false) {
-          final values = _formKey.currentState!.value;
-          "Register Values: $values".infoLog();
-        } else {
-          "Form validation hatalı".errorLog();
+    return BlocConsumer<RegisterBloc, RegisterState>(
+      listener: (context, state) {
+        if (state is RegisterSuccess) {
+          "Kayıt başarılı".infoLog();
+          context.pop();
+        } else if (state is RegisterFailure) {
+          state.message.errorLog();
         }
       },
-      child: "Kayıt Ol".text(
-        textStyle: context.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
-      ),
+      builder: (context, state) {
+        final isLoading = state is RegisterLoading;
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: context.theme.colorScheme.secondary,
+            minimumSize: const Size.fromHeight(48),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          onPressed: isLoading
+              ? null
+              : () {
+                  if (_formKey.currentState?.saveAndValidate() ?? false) {
+                    final values = _formKey.currentState!.value;
+                    final email = values['email'] as String;
+                    final password = values['password'] as String;
+                    context.read<RegisterBloc>().add(
+                      RegisterSubmitted(email: email, password: password),
+                    );
+                  } else {
+                    "Form validation hatalı".errorLog();
+                  }
+                },
+          child: isLoading
+              ? const SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+              : "Kayıt Ol".text(
+                  textStyle: context.bodyLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+        );
+      },
     );
   }
 

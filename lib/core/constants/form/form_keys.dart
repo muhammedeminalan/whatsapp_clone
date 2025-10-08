@@ -9,8 +9,10 @@ class FormKeys {
       GlobalKey<FormBuilderState>();
   static final GlobalKey<FormBuilderState> phoneFormKey =
       GlobalKey<FormBuilderState>();
-  static final GlobalKey<FormBuilderState> loginFormKey =
+
+  // Her çağrıda yeni key oluştur
+  static GlobalKey<FormBuilderState> get loginFormKey =>
       GlobalKey<FormBuilderState>();
-  static final GlobalKey<FormBuilderState> registerFormKey =
+  static GlobalKey<FormBuilderState> get registerFormKey =>
       GlobalKey<FormBuilderState>();
 }

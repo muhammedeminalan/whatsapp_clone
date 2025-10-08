@@ -9,6 +9,9 @@ import 'package:whatsapp_clone/core/transitions/app_transitions.dart';
 import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 import 'package:whatsapp_clone/features/auth_features/register/presentation/views/register_view.dart';
 import 'package:whatsapp_clone/features/botton_navigation/view/bottom_navigation_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_clone/features/auth_features/login/presentation/bloc/login_bloc.dart';
+// request model kullanımı kaldırıldı
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -149,25 +152,51 @@ class _LoginViewState extends State<LoginView> {
   // Giriş Yap Butonu
 
   Widget _buildLoginButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: context.theme.colorScheme.secondary,
-        minimumSize: const Size.fromHeight(48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      ),
-      onPressed: () {
-        if (_formKey.currentState?.saveAndValidate() ?? false) {
-          final values = _formKey.currentState!.value;
-          "Login Values: $values".infoLog();
+    return BlocConsumer<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state is LoginSuccess) {
           context.pushPage(BottomNavigationView());
-        } else {
-          "Form validation hatalı".errorLog();
-          context.pushPage(BottomNavigationView());
+        } else if (state is LoginFailure) {
+          state.message.errorLog();
         }
       },
-      child: "Giriş Yap".text(
-        textStyle: context.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
-      ),
+      builder: (context, state) {
+        final isLoading = state is LoginLoading;
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: context.theme.colorScheme.secondary,
+            minimumSize: const Size.fromHeight(48),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          onPressed: isLoading
+              ? null
+              : () {
+                  if (_formKey.currentState?.saveAndValidate() ?? false) {
+                    final values = _formKey.currentState!.value;
+                    final email = values['email'] as String;
+                    final password = values['password'] as String;
+                    context.read<LoginBloc>().add(
+                      LoginSubmitted(email: email, password: password),
+                    );
+                  } else {
+                    "Form validation hatalı".errorLog();
+                  }
+                },
+          child: isLoading
+              ? const SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+              : "Giriş Yap".text(
+                  textStyle: context.bodyLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+        );
+      },
     );
   }
 

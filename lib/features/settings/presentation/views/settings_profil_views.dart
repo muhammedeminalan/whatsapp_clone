@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, deprecated_member_use
+// ignore_for_file: must_be_immutable, deprecated_member_use, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +9,10 @@ import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_setti
 import 'package:whatsapp_clone/features/settings/presentation/widgets/edit_settings_widgets/settings_profil_card.dart';
 import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 import 'package:whatsapp_clone/core/widgets/index.dart';
+import 'package:whatsapp_clone/config/init/injection_container.dart';
+import 'package:whatsapp_clone/core/base/auth_base.dart';
+import 'package:whatsapp_clone/features/auth_features/login/presentation/views/login_view.dart';
+import 'package:whatsapp_clone/core/service/cache/shared_prefs_service.dart';
 
 class SettingsProfilViews extends StatefulWidget {
   const SettingsProfilViews({super.key});
@@ -185,11 +189,26 @@ class _SettingsProfilViewsState extends State<SettingsProfilViews> {
   TextButton _logOutButton(BuildContext context) {
     return TextButton(
       onPressed: () {
-        //TODO Buraya çıkış yap işlemi gelecek
-        /*     context.pushAndRemoveUntilPage(
-          LoginView(),
-          predicate: (route) => false,
-        ); */
+        final auth = sl<AuthBase>();
+        auth
+            .signOut()
+            .then((_) {
+              // Clear persisted session
+              final prefs = sl<SharedPrefsService>();
+              prefs.setBool('isLoggedIn', false);
+              prefs.remove('userId');
+              prefs.remove('userEmail');
+              'ÇIKIŞ_BAŞARILI zaman=${DateTime.now().toIso8601String()}'
+                  .infoLog(name: 'AUTH');
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const LoginView()),
+                (route) => false,
+              );
+            })
+            .catchError((e) {
+              'ÇIKIŞ_BAŞARISIZ hata=${e.toString()} zaman=${DateTime.now().toIso8601String()}'
+                  .errorLog(name: 'AUTH');
+            });
       },
       child: Text(
         "Çıkış Yap",
