@@ -24,7 +24,7 @@ class _RandomUsernameFieldState extends State<RandomUsernameField> {
 
   /// Random suffix üretir, hem harf hem rakam içerir
   String _randomSuffix() {
-    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    const letters = 'batu';
     const digits = '0123456789';
     String letter = letters[_random.nextInt(letters.length)];
     String digit = digits[_random.nextInt(digits.length)];

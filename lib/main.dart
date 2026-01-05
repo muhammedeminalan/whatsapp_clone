@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:whatsapp_clone/core/utils/extensions/index.dart';
 import 'config/init/app_initializer.dart';
 import 'config/init/bloc_providers.dart';
 import 'config/theme/app_theme.dart';

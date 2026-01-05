@@ -200,7 +200,7 @@ class _RegisterViewState extends State<RegisterView> {
         final isLoading = state is RegisterLoading;
         return ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: context.theme.colorScheme.secondary,
+            backgroundColor: context.theme.colorScheme.primary,
             minimumSize: const Size.fromHeight(48),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -244,8 +244,9 @@ class _RegisterViewState extends State<RegisterView> {
       },
       child: "Zaten hesabın var mı? Giriş Yap".text(
         textStyle: context.bodyMedium!.copyWith(
-          color: context.theme.colorScheme.primary,
+          color: context.theme.colorScheme.secondary,
           fontWeight: FontWeight.bold,
+          fontSize: context.bodyMedium!.fontSize! * 1,
         ),
       ),
     );
